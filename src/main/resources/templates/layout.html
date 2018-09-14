@@ -1,0 +1,22 @@
+<nav th:fragment="header" class="navbar navbar-light bg-light justify-content-between">
+    <a class="navbar-brand" th:href="@{/}">MyContact</a>
+
+    <form class="form-inline">
+
+		<!-- User logged -->
+        <div sec:authorize="isAuthenticated()">
+        	<span sec:authentication="name"></span>
+        	<a th:href="@{/logout}" class="btn btn-outline-success my-2 my-sm-0">Logout</a>
+        </div>
+
+		<!-- User not yet logged -->
+        <div sec:authorize="!isAuthenticated()">
+            <a th:href="@{/signup}" class="btn btn-outline-success my-2 my-sm-0">Sign
+				Up</a> <a th:href="@{/login}" class="btn btn-outline-success my-2 my-sm-0">Login</a>
+
+            <!-- Dialog form login -->
+            <!-- <th:block th:include="/login_modal"></th:block> -->
+
+        </div>
+    </form>
+</nav>
